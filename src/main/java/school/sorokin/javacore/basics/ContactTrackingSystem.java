@@ -58,7 +58,7 @@ public class ContactTrackingSystem {
 
     private static void addContact() {
         if (noteCounter == MAX_COUNT_CONTACTS) {
-            System.out.println("Невозможно добавить контакт из-за его полного списка.");
+            System.out.println("Невозможно добавить контакт из-за полного списка контактов.");
             return;
         }
 
@@ -71,6 +71,7 @@ public class ContactTrackingSystem {
             if (names[i].isBlank()) {
                 names[i] = name;
                 phones[i] = phone;
+                noteCounter++;
                 System.out.printf("Контакт сохранён. %s: %s%n", name, phone);
                 return;
             }
@@ -80,7 +81,7 @@ public class ContactTrackingSystem {
     private static void getContacts() {
         for (int i = 0; i < MAX_COUNT_CONTACTS; i++) {
             if (!names[i].isBlank()) {
-                System.out.printf("%d. %s -%s%n", i, names[i], phones[i]);
+                System.out.printf("%d. %s: %s%n", i + 1, names[i], phones[i]);
             }
         }
     }
