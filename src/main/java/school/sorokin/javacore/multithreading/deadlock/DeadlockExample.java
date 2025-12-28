@@ -20,10 +20,10 @@ public class DeadlockExample {
         });
         Thread secondThread = new Thread(() -> {
             for (int i = 0; i < TRIES; i++) {
-                synchronized (secondSync) {
-                    System.out.println("Второй поток захватил второй монитор");
-                    synchronized (firstSync) {
-                        System.out.println("Второй поток захватил первый монитор");
+                synchronized (firstSync) {
+                    System.out.println("Второй поток захватил первый монитор");
+                    synchronized (secondSync) {
+                        System.out.println("Второй поток захватил второй монитор");
                         System.out.println("---");
                     }
                 }
